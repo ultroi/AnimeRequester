@@ -1,4 +1,4 @@
-from pyrogram import filters 
+from pyrogram import filters, Client 
 import aiohttp
 from pyrogram.types import InlineKeyboardButton , InlineKeyboardMarkup
 import os
