@@ -33,7 +33,7 @@ def start(_,message):
   
 @bot.on_message(filters.command('request'))
 def req(_,message):
-        await message.reply_text("Please Enter Your Query ! \n • Format `/request <query>`)
+        await message.reply_text("Please Enter Your Query ! \n • Format /request <query>")
         return
     msg.reply_text('Request Sended Sucessfully.\n Please wait for reply.....')
     global req_
