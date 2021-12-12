@@ -38,7 +38,7 @@ def req(_,message):
     if not query: 
         message.reply("Please enter a query!") 
         return
-    query in caption: 
+    caption = query 
     term = query.replace(" ")
     message.reply('Request Sended Sucessfully.\n Please wait for reply.....')
     global req_
