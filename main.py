@@ -25,7 +25,7 @@ def call_back_in_filter(data):
 
 @bot.on_message(filters.command('start'))
 def start(_,message):
-    message.reply_text(text =f"""Hello there , use /request your ideas - to request""",reply_to_message_id = message.message_id ,  reply_markup=InlineKeyboardMarkup(
+    message.reply_text(text =f"""Hello there , use /request your ideas - to request""")
     keyboard = []
     keyboard.append([InlineKeyboardButton("Request" , callback_data=f"request:{message.from_user.id}")])
  
