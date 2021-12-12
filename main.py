@@ -39,7 +39,7 @@ def req(_,message):
         message.reply("Please enter a query!") 
         return
     caption = query 
-    term = query.replace(" ")
+    term = query.replace(" ", "%20")
     message.reply('Request Sended Sucessfully.\n Please wait for reply.....')
     global req_
     req_ = message.text.replace(message.text.split(' ')[0] , '')
