@@ -28,6 +28,17 @@ def start(_,message):
     keyboard = []
     keyboard.append([InlineKeyboardButton("Request", callback_data="request")])
     message.reply_text(text =f"""Hello there , use /request your ideas - to request""" , reply_markup=InlineKeyboardMarkup(keyboard))
+  
+def send_request(chat_id, text,keyboard=None):
+    if not keyboard: 
+        keyboard = InlineKeyboardMarkup(paginate_modules(0, REQUEST, "request")) 
+    dispatcher.bot.send_message( 
+        chat_id=chat_id,
+        text=text,
+        parse_mode=ParseMode.MARKDOWN, 
+        disable_web_page_preview=True, 
+        reply_markup=keyboard,
+)
     
  
 @bot.on_message(filters.command('request'))
