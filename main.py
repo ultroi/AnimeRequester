@@ -38,7 +38,7 @@ def req(_,message):
         await message.reply_text("Please Enter Your Query ! \n • Format `/request <query>`")
         return
     caption = query 
-    	msg.reply_text('Request Sended Sucessfully.\n Please wait for reply.....')
+    msg.reply_text('Request Sended Sucessfully.\n Please wait for reply.....')
     global req_
     req_ = message.text.replace(message.text.split(' ')[0] , '')
     keyboard = []
