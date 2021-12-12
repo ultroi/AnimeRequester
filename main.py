@@ -38,8 +38,9 @@ def req(_,message):
     if not query: 
         message.reply("Please enter a query!") 
         return
-    if query in caption: 
-       message.reply('Request Sended Sucessfully.\n Please wait for reply.....')
+    query in caption: 
+    term = query.replace(" ")
+    message.reply('Request Sended Sucessfully.\n Please wait for reply.....')
     global req_
     req_ = message.text.replace(message.text.split(' ')[0] , '')
     keyboard = []
