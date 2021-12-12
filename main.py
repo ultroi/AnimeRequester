@@ -35,7 +35,7 @@ def start(_,message):
 def req(_,message):
     query = "".join(args)
     if not query: 
-        msg.reply_text("Please enter a query!") 
+        message.reply("Please enter a query!") 
         return
     caption = query 
     	msg.reply_text('Request Sended Sucessfully.\n Please wait for reply.....')
