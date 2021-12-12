@@ -33,7 +33,8 @@ def start(_,message):
     message.reply_text(text =f""" **Welcome To Anime Publish Bot** \n Hello dear,\nTell your request, query and other prblm related to channel. You tell directly to channel admins to resolve problem.\n\n Use = `/request <query>` """ , reply_markup=InlineKeyboardMarkup(keyboard))
   
 @bot.on_message(filters.command('request'))
-def req(_,message):
+def req(_,message): 
+    if len(message.command) != 2:
         await message.reply_text("Please Enter Your Query ! \n • Format `/request <query>`)
         return
     caption = query 
