@@ -38,7 +38,7 @@ def req(_,message):
         msg.reply_text("Please enter a query!") 
         return
     caption = query 
-    else:
+    else: 
     message.reply('Request Sended Sucessfully.\n Please wait for reply.....')
     global req_
     req_ = message.text.replace(message.text.split(' ')[0] , '')
