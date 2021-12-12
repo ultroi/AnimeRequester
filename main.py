@@ -33,7 +33,7 @@ def start(_,message):
   
 @bot.on_message(filters.command('request'))
 def req(_,message):
-    query = "".join(arg)
+    query = " ".join(args)
     if not query: 
         message.reply("Please enter a query!") 
         return
