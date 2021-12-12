@@ -33,6 +33,12 @@ def start(_,message):
   
 @bot.on_message(filters.command('request'))
 def req(_,message):
+    query = "".join(args)
+    if not query: 
+        msg.reply_text("Please enter a query!") 
+        return
+    caption = query 
+    else:
     message.reply('Request Sended Sucessfully.\n Please wait for reply.....')
     global req_
     req_ = message.text.replace(message.text.split(' ')[0] , '')
