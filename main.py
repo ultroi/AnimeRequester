@@ -28,7 +28,7 @@ def start(_,message):
     keyboard = []
     keyboard.append([InlineKeyboardButton("Anime Channel", url="https://t.me/Anime_Publish")])
     keyboard.append([InlineKeyboardButton("List Of Anime", url="https://t.me/Anime_Publish/3041")])
-    message.reply_text(text =f""" *Welcome To Anime Publish Bot* Hello dear, /n Tell your request, query and other prblm related to channel. You tell directly to channel admins to resolve problem. /n/n Use = `/request <query>` """ , reply_markup=InlineKeyboardMarkup(keyboard))
+    message.reply_text(text =f""" *Welcome To Anime Publish Bot* Hello dear, /n Tell your request, query and other prblm related to channel. You tell directly to channel admins to resolve problem./n Use = `/request <query>` """ , reply_markup=InlineKeyboardMarkup(keyboard))
   
 def send_request(chat_id, text,keyboard=None):
     if not keyboard: 
