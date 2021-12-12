@@ -27,9 +27,9 @@ def call_back_in_filter(data):
 def start(_,message):
     keyboard = []
     keyboard.append([InlineKeyboardButton("Request" , callback_data=f"request:{message.from_user.id}")])
-keyboard.append([InlineKeyboardButton("Anime Channel", url="https://t.me/Anime_Publish")])
-keyboard.append([InlineKeyboardButton("Anime Movies", url="https://t.me/AnimeNexusMovies")])
-message.reply_text(text =f""" **Welcome To Anime Publish Bot** \n Hello dear,\nTell your request, query and other prblm related to channel. You tell directly to channel admins to resolve problem.\n\n Use = `/request <query>` """ , reply_markup=InlineKeyboardMarkup(keyboard))
+    keyboard.append([InlineKeyboardButton("Anime Channel", url="https://t.me/Anime_Publish")])
+    keyboard.append([InlineKeyboardButton("Anime Movies", url="https://t.me/AnimeNexusMovies")])
+    message.reply_text(text =f""" **Welcome To Anime Publish Bot** \n Hello dear,\nTell your request, query and other prblm related to channel. You tell directly to channel admins to resolve problem.\n\n Use = `/request <query>` """ , reply_markup=InlineKeyboardMarkup(keyboard))
   
 @bot.on_message(filters.command('request'))
 def req(_,message):
