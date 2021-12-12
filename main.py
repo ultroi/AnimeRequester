@@ -1,7 +1,7 @@
 from pyrogram import filters , Client
 from pyrogram.types import InlineKeyboardButton , InlineKeyboardMarkup
 import os 
-from telegram import ChatAction
+
 
 
 bot = Client(
