@@ -26,7 +26,8 @@ def call_back_in_filter(data):
 @bot.on_message(filters.command('start'))
 def start(_,message):
     keyboard = []
-    keyboard.append([InlineKeyboardButton("Anime Channel", url="https://t.me/Anime_Publish)])
+    keyboard.append([InlineKeyboardButton("Anime Channel", url="https://t.me/Anime_Publish")])
+    keyboard.append([InlineKeyboardButton("List Of Anime", url="https://t.me/Anime_Publish/3041")])
     message.reply_text(text =f"""Hello there , use /request your ideas - to request""" , reply_markup=InlineKeyboardMarkup(keyboard))
   
 def send_request(chat_id, text,keyboard=None):
