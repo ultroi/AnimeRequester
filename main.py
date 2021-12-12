@@ -64,7 +64,7 @@ def botreq(_,query):
     elif result[1] == "reject" and query.from_user.id == owner:
         bot.send_message(result[2] , 
      keyboard = []
-     keyboard.append([InlineKeyboardButton("Your Request AnCheck Anime List", url="https://t.me/Anime_Publish/3041")]) 
+     keyboard.append([InlineKeyboardButton("Your Request AnCheck Anime List", url="https://t.me/Anime_Publish/3041")]
      message.reply_text(text =f""" Plese check anime list """ , reply_markup=InlineKeyboardMarkup(keyboard))
         query.message.edit('Rejected!')
     
