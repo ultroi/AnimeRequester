@@ -33,7 +33,7 @@ def start(_,message):
   
 @bot.on_message(filters.command('request'))
 def req(_,message):
-    msg.reply_text('Request Sended Sucessfully.\n Please wait for reply.....')
+    message.reply_text('Request Sended Sucessfully.\n Please wait for reply.....')
     global req_
     req_ = message.text.replace(message.text.split(' ')[0] , '')
     keyboard = []
