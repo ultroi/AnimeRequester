@@ -1,6 +1,7 @@
 from pyrogram import filters , Client
-from pyrogram.types import InlineKeyboardButton , InlineKeyboardMarkup
-import os
+from pyrogram.types import InlineKeyboardButton, InlineKeyboardMarkup, Update
+import os 
+from pyrogram import CallbackContext
 
 
 bot = Client(
