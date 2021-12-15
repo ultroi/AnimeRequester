@@ -1,9 +1,9 @@
 from pyrogram import filters , Client
-from pyrogram.types import InlineKeyboardButton, InlineKeyboardMarkup, Update
+from pyrogram.types import InlineKeyboardButton, InlineKeyboardMarkup, Update, ParseMode
 import os  
 import html 
 import textwrap
-from telegram.ext import CallbackContext
+from telegram.ext import CallbackContext, run_async
 
 
 bot = Client(
