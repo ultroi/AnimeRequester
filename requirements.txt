@@ -2,3 +2,4 @@ pyrogram
 telegram
 tgcrypto
 aiohttp
+html2text 
