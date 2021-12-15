@@ -49,7 +49,7 @@ youtube-dl
 youtube_search_python
 youtube_search
 lyrics_extractor
-asyncio
+
 cloudscraper
 dateparser==1.0.0
 pymongo
