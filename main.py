@@ -5,7 +5,7 @@ import os
 import html 
 import textwrap
 from telegram.ext import CallbackContext, run_async
-from telegram.types import ParseMode
+from telegram import ParseMode
 
 bot = Client(
     "notesbot",
