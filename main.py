@@ -67,9 +67,9 @@ def botreq(_,query):
     else:
         query.answer('You are not allowed')
 
-dispatcher.add_handler(REQ__HANDLER)
-__handlers__ = [
-    REQ__HANDLER,
-]
+
+
+
+
 
 bot.run()
