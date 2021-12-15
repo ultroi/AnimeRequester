@@ -42,7 +42,7 @@ def req(_,message):
         update.effective_message.reply_text("Format : /anime < anime name >") 
         return  
     else: 
-    global req_
+        global req_
     req_ = message.text.replace(message.text.split(' ')[0] , '')
     keyboard = []
     keyboard.append([InlineKeyboardButton("✅ Accept" , callback_data=f"request:accept:{message.from_user.id}")])
