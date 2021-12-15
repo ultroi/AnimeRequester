@@ -36,7 +36,12 @@ def start(_,message):
   
 @bot.on_message(filters.command('request'))
 def req(_,message):
-    message.reply_text('Request Sended Sucessfully.\n Please wait for reply.....')
+    message = update.effective_message
+    search = message.text.split(" ", 1)
+    if len(search) == 1:
+        update.effective_message.reply_text("Format : /anime < anime name >") 
+        return  
+    else: 
     global req_
     req_ = message.text.replace(message.text.split(' ')[0] , '')
     keyboard = []
