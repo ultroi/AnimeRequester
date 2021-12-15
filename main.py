@@ -1,11 +1,11 @@
 from pyrogram import filters , Client
 from pyrogram.types import InlineKeyboardButton, InlineKeyboardMarkup, Update 
-from telegram.types import ParseMode 
+
 import os  
 import html 
 import textwrap
 from telegram.ext import CallbackContext, run_async
-
+from telegram.types import ParseMode
 
 bot = Client(
     "notesbot",
