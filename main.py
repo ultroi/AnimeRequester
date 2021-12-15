@@ -34,6 +34,7 @@ def start(_,message):
     keyboard.append([InlineKeyboardButton("Anime Movies", url="https://t.me/AnimeNexusMovies")])
     message.reply_text(text =f""" **Welcome To Anime Publish Bot** \n Hello dear,\nTell your request, query and other prblm related to channel. You tell directly to channel admins to resolve problem.\n\n Use = `/request <query>` """ , reply_markup=InlineKeyboardMarkup(keyboard))
   
+@run_async
 @bot.on_message(filters.command('request'))
 def req_(update: Update, context: CallbackContext):
     message = update.effective_message
