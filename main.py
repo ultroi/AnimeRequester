@@ -1,5 +1,6 @@
 from pyrogram import filters , Client
-from pyrogram.types import InlineKeyboardButton, InlineKeyboardMarkup, Update, ParseMode
+from pyrogram.types import InlineKeyboardButton, InlineKeyboardMarkup, Update 
+from telegram.types import ParseMode 
 import os  
 import html 
 import textwrap
