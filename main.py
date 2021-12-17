@@ -1,4 +1,4 @@
-from telegram import filters, Client
+from pyrogram import filters, Client
 from pyrogram.types import InlineKeyboardButton, InlineKeyboardMarkup, Update 
 import requests
 import os  
