@@ -1,11 +1,12 @@
-from pyrogram import filters, Client
-from pyrogram.types import InlineKeyboardButton, InlineKeyboardMarkup, Update 
 import requests
 import os  
 import html 
 import textwrap
+from pyrogram import filters, Client
+from pyrogram.types import InlineKeyboardButton, InlineKeyboardMarkup, Update 
 from telegram.ext import CallbackContext, run_async
-from telegram import ParseMode
+from telegram import ParseMode 
+from AnimeRequester.alternation import typing_action 
 
 bot = Client(
     "notesbot",
