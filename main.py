@@ -45,6 +45,7 @@ def req_(_, message):
         message.reply_text("Format : /query < query >")
         return
     else:
+        message.reply('Your request have been sent')
         global req_
     req_ = message.text.replace(message.text.split(' ')[0] , '')
     keyboard = []
