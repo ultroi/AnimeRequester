@@ -1,5 +1,6 @@
 import requests
 import os  
+import aiohttp
 import html 
 import textwrap 
 import jikanpy 
@@ -38,9 +39,9 @@ def start(_,message):
     keyboard.append([InlineKeyboardButton("Anime Movies", url="https://t.me/AnimeNexusMovies")])
     message.reply_text(text =f""" **Welcome To Anime Publish Bot** \n Hello dear,\nTell your request, query and other prblm related to channel. You tell directly to channel admins to resolve problem.\n\n Use = `/request <query>` """ , reply_markup=InlineKeyboardMarkup(keyboard))
   
-@run_async
+
 @bot.on_message(filters.command('request'))
-def req_(_, message):
+async def req_(_, message):
     if len(message.command) != 2:
         await message.reply_text("Format : /anime < anime name >") 
         return  
