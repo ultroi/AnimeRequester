@@ -40,7 +40,7 @@ def start(_,message):
   
 @run_async
 @bot.on_message(filters.command('request'))
-def req_(update: Update, context: CallbackContext):
+def req_(_, message):
     if len(message.command) != 2:
         update.effective_message.reply_text("Format : /anime < anime name >") 
         return  
