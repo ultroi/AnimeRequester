@@ -51,7 +51,7 @@ async def req_(_, message):
     keyboard = []
     keyboard.append([InlineKeyboardButton("✅ Accept" , callback_data=f"request:accept:{message.from_user.id}")])
     keyboard.append([InlineKeyboardButton("❌ Reject" , callback_data=f'request:reject:{message.from_user.id}')])
-    bot.send_message(int(CHAT_ID) , f'#Request \n\n **• Requestor Info:-\n ID - {message.from_user.id} \n Username - @{message.from_user.username} \n\n Requested for** -{req_}' , reply_markup=InlineKeyboardMarkup(keyboard))
+    bot.SendMessage.send_message(int(CHAT_ID) , f'#Request \n\n **• Requestor Info:-\n ID - {message.from_user.id} \n Username - @{message.from_user.username} \n\n Requested for** -{req_}' , reply_markup=InlineKeyboardMarkup(keyboard))
     
 
 @bot.on_callback_query(call_back_in_filter('request'))
