@@ -42,7 +42,7 @@ def start(_,message):
 @bot.on_message(filters.command('request'))
 def req_(_, message):
     if len(message.command) != 2:
-        message.reply_text("Format : /query < query >")
+        message.reply_text("Format : /request < query >")
         return
     else:
         message.reply('Your request have been sent')
