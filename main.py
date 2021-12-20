@@ -59,11 +59,11 @@ def botreq(_,query):
     result = query.data.split(':')
 
     if result[1] == "accept" and query.from_user.id == owner:
-        bot.send_message(result[2] , "Your Request has been Approved. Please wait for Next Reply.....")
+        bot.send_message(result[2] , "*Your Request has been Approved!*")
         query.message.edit('Request approved\n\n{}'.format(req_))
 
     elif result[1] == "reject" and query.from_user.id == owner:
-        bot.send_message(result[2] , "Sorry your Request has been decline. Please check [Anime List](https://t.me/Anime_Publish/3041) ! ")
+        bot.send_message(result[2] , "Sorry your Request has been decline. Please check [Anime List](https://t.me/Anime_Publish/3041)! ")
         query.message.edit('Rejected!')
 
     else:
