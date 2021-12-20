@@ -43,7 +43,7 @@ def start(_,message):
 @bot.on_message(filters.command('request'))
 async def req_(_, message):
     if len(message.command) != 2:
-        await message.reply_text("Format : /query < query >") 
+        message.reply_text("Format : /query < query >") 
         return  
     else: 
         global req_
