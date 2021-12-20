@@ -42,7 +42,7 @@ def start(_,message):
 @bot.on_message(filters.command('request'))
 def req_(_, message):
     if len(message.command) != 2:
-        update.effective_message.reply_text("Format : /anime < anime name >") 
+        await message.reply_text("Format : /anime < anime name >") 
         return  
     else: 
         global req_
