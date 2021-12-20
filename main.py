@@ -1,7 +1,9 @@
 import requests
 import os  
 import html 
-import textwrap
+import textwrap 
+import jikanpy 
+import bs4 
 from pyrogram import filters, Client
 from pyrogram.types import InlineKeyboardButton, InlineKeyboardMarkup, Update 
 from telegram.ext import CallbackContext, run_async
