@@ -4,7 +4,7 @@ import html
 import textwrap 
 import jikanpy 
 import bs4 
-from telegram import filters, Client
+from pyrogram import filters, Client
 from pyrogram.types import InlineKeyboardButton, InlineKeyboardMarkup, Update 
 from telegram.ext import CallbackContext, run_async
 from telegram import ParseMode 
