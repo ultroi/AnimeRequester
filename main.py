@@ -33,9 +33,9 @@ def call_back_in_filter(data):
 @bot.on_message(filters.command('start'))
 def start(_,message):
     keyboard = []
-    keyboard.append([InlineKeyboardButton("Request" , url="t.me/Request?startPM=true")])
+    keyboard.append([InlineKeyboardButton("Owner", url="https:/t.me/Weeb_lover")])
     keyboard.append([InlineKeyboardButton("Anime Channel", url="https://t.me/Anime_Publish")])
-    keyboard.append([InlineKeyboardButton("Anime Movies", url="https://t.me/AnimeNexusMovies")])
+    keyboard.append([InlineKeyboardButton("Anime Movies", url="https://t.me/AnimeNexusMovies:same")])
     message.reply_text(text =f""" **Welcome To Anime Publish Bot** \n Hello dear,\nTell your request, query and other prblm related to channel. You tell directly to channel admins to resolve problem.\n\n Use = `/request <query>` """ , reply_markup=InlineKeyboardMarkup(keyboard))
 
 
