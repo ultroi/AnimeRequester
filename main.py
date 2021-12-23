@@ -32,7 +32,8 @@ def call_back_in_filter(data):
 
 @bot.on_message(filters.command('start'))
 def start(_,message): 
-    keyboard = []
+    keyboard = [] 
+    keyboard.append([InlineKeyboardButton ("Our Channel", url="https://t.me/Anime_Publish")])
     message.reply_text(text =f""" **Hello dear**,\n\n Tell your request, query and other prblm related to channel. You tell directly to channel admins to resolve problem.\n\n Use = /request (query) """ , reply_markup=InlineKeyboardMarkup(keyboard))
 
 
