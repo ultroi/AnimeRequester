@@ -65,7 +65,14 @@ def botreq(_,query):
         query.message.edit('Rejected!')
 
     else:
-        query.answer('You are not allowed')
+        query.answer('You are not allowed') 
+
+@bot.on_message(filters.command('anime'))  
+def anime(_, message): 
+    if con != "clean": 
+        message.reply_text("Ss")
+        
+
 
 
 bot.run()
