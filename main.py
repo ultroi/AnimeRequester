@@ -75,6 +75,7 @@ def botreq(_,query):
 
 @bot.on_message(filters.command('anime'))  
 def anime(_, message): 
+    con = event.pattern_match.group(1).lower()
     if con != "clean": 
         message.reply_text("Ss")
         
