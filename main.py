@@ -5,6 +5,11 @@ import html
 import textwrap
 import jikanpy
 import bs4 
+import asyncio
+
+from asyncio import sleep
+
+
 from telethon import events
 from pyrogram import filters, Client
 from pyrogram.types import InlineKeyboardButton, InlineKeyboardMarkup, Update
