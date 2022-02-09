@@ -73,8 +73,7 @@ def botreq(_,query):
     else:
         query.answer('You are not allowed') 
 
-@bot.on_message(filters.command('anime'))  
-def anime(_, message): 
+def anime(event):
     con = event.pattern_match.group(1).lower()
     if con != "clean": 
         message.reply_text("Ss")
