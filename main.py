@@ -4,7 +4,8 @@ import aiohttp
 import html
 import textwrap
 import jikanpy
-import bs4
+import bs4 
+from telethon import events
 from pyrogram import filters, Client
 from pyrogram.types import InlineKeyboardButton, InlineKeyboardMarkup, Update
 from telegram.ext import CallbackContext, run_async
