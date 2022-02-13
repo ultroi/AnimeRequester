@@ -73,10 +73,15 @@ def botreq(_,query):
     else:
         query.answer('You are not allowed') 
 
-def anime(_,message):
-    con = event.pattern_match.group(1).lower()
-    if con != "clean": 
-        message.reply_text("Ss")
+from pyrogram import Client, filters
+app = Client("my_account")
+
+
+    @app.on_message(filters.private)
+async def hello(client, message):
+    await message.reply("Hello from Pyrogram!")
+
+     
         
 
 
