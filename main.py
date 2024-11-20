@@ -2,7 +2,7 @@ import telebot
 import requests
 
 # Replace with your bot token
-BOT_TOKEN = "YOUR_BOT_TOKEN_HERE"
+BOT_TOKEN = "7730082482:AAGLS3bSuHk7QZCbJfj-7RehWflS_lR0EN8"
 bot = telebot.TeleBot(BOT_TOKEN)
 
 # Function to upload the image to Telegra.ph
