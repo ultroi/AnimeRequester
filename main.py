@@ -1,89 +1,57 @@
+import telebot
 import requests
-import os
-import aiohttp
-import html
-import textwrap
-import jikanpy
-import bs4 
-import asyncio
 
-from asyncio import sleep
+# Replace with your bot token
+BOT_TOKEN = "YOUR_BOT_TOKEN_HERE"
+bot = telebot.TeleBot(BOT_TOKEN)
 
+# Function to upload the image to Telegra.ph
+def upload_to_telegraph(file_path):
+    with open(file_path, 'rb') as file:
+        response = requests.post(
+            "https://telegra.ph/upload",
+            files={"file": ("file", file, "image/jpeg")}
+        )
+        if response.status_code == 200:
+            result = response.json()
+            if isinstance(result, list) and "src" in result[0]:
+                return f"https://graph.org{result[0]['src']}"
+        return None
 
-from telethon import events
-from pyrogram import filters, Client
-from pyrogram.types import InlineKeyboardButton, InlineKeyboardMarkup, Update
-from telegram.ext import CallbackContext, run_async
-from telegram import ParseMode
-from alternation import typing_action
-
-bot = Client(
-    "notesbot",
-    api_id=os.environ['API_ID'],
-    api_hash=os.environ['API_HASH'],
-    bot_token=os.environ['BOT_TOKEN'],
-
-)
-
-CHAT_ID = os.environ.get('CHAT_ID')
-owner = int(os.environ.get('OWNER'))
-
-
-def call_back_in_filter(data):
-    return filters.create(
-        lambda flt, _, query: flt.data in query.data,
-        data=data
-    )
-
-
-@bot.on_message(filters.command('start'))
-def start(_,message): 
-    keyboard = [] 
-    keyboard.append([InlineKeyboardButton ("Our Channel", url="https://t.me/Anime_Publish")])
-    message.reply_text(text =f""" **Hello dear**,\n\n Tell your request, query and other prblm related to channel. You tell directly to channel admins to resolve problem.\n\n Use = /request (query) """ , reply_markup=InlineKeyboardMarkup(keyboard))
-
-
-@bot.on_message(filters.command('request'))
-def req_(_, message):
-    if len(message.command) != 2:
-        message.reply_text("Format : /request < query >")
+# Handler for images and documents
+@bot.message_handler(content_types=['photo', 'document'])
+def handle_image(message):
+    # Handle photos
+    if message.content_type == 'photo':
+        file_id = message.photo[-1].file_id
+    # Handle documents (assuming it's an image file)
+    elif message.content_type == 'document':
+        file_id = message.document.file_id
+    else:
+        bot.reply_to(message, "Unsupported file type.")
         return
+
+    # Get file info and download it
+    file_info = bot.get_file(file_id)
+    file_path = file_info.file_path
+    downloaded_file = bot.download_file(file_path)
+    
+    # Save the file locally
+    local_file = f"temp_{file_id}.jpg"
+    with open(local_file, 'wb') as new_file:
+        new_file.write(downloaded_file)
+
+    # Upload to Telegra.ph
+    link = upload_to_telegraph(local_file)
+    if link:
+        bot.reply_to(message, f"Your image has been uploaded: {link}")
     else:
-        message.reply('Your request have been sent')
-        global req_
-    req_ = message.text.replace(message.text.split(' ')[0] , '')
-    keyboard = []
-    keyboard.append([InlineKeyboardButton("✅ Accept" , callback_data=f"request:accept:{message.from_user.id}")])
-    keyboard.append([InlineKeyboardButton("❌ Reject" , callback_data=f'request:reject:{message.from_user.id}')])
-    bot.send_message(int(CHAT_ID) , f'#Request \n\n **• Requestor Info:-\n ID - {message.from_user.id} \n Username - @{message.from_user.username} \n\n Requested for** -{req_}' , reply_markup=InlineKeyboardMarkup(keyboard))
+        bot.reply_to(message, "Failed to upload the image. Please try again.")
 
+    # Clean up the local file
+    import os
+    if os.path.exists(local_file):
+        os.remove(local_file)
 
-@bot.on_callback_query(call_back_in_filter('request'))
-def botreq(_,query):
-    result = query.data.split(':')
-
-    if result[1] == "accept" and query.from_user.id == owner:
-        bot.send_message(result[2] , "**Your Request has been Approved!**")
-        query.message.edit('Request approved\n\n{}'.format(req_))
-
-    elif result[1] == "reject" and query.from_user.id == owner:
-        bot.send_message(result[2] , "Sorry your Request has been decline. Please check [Anime List](https://t.me/Anime_Publish/3041)! ")
-        query.message.edit('Rejected!')
-
-    else:
-        query.answer('You are not allowed') 
-
-from pyrogram import Client, filters
-app = Client("my_account")
-
-
-@app.on_message(filters.private)
-def hello(client, message):
-    message.reply("Hello from Pyrogram!")
-
-     
-        
-
-
-
-bot.run()
+# Start the bot
+bot.polling()
