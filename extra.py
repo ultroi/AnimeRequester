@@ -3,7 +3,7 @@ from telegram.ext import Updater, CommandHandler, CallbackContext
 import re
 
 # Function to calculate XP details with the updated format and HTML
-def calculate_xp_info(inventory_text):
+ async def calculate_xp_info(inventory_text):
     try:
         # Extract information from the inventory using regex
         name_match = re.search(r"┣ 👤 Name: (.+)", inventory_text)
@@ -25,21 +25,22 @@ def calculate_xp_info(inventory_text):
 
         # Calculate remaining EXP and explores left
         remaining_exp = next_level_exp - current_exp
-        explores_left = remaining_exp // 350
+        explores_left = remaining_exp // 325  # Updated from 350 to 325
 
-        # Calculate next level up rewards based on level
-        if level < 100:
-            coins = level * 1000
-            gems = level * 5
-            tokens = level + 10
-        elif level < 200:
-            coins = level * 1000
-            gems = level * 10
-            tokens = level * 2 + 10
+        # Calculate next level up rewards based on the next level
+        next_level = level + 1  # Next level calculation
+        if next_level < 100:
+            coins = next_level * 1000
+            gems = next_level * 5
+            tokens = next_level + 10
+        elif next_level < 200:
+            coins = next_level * 1000
+            gems = next_level * 10
+            tokens = next_level * 2 + 10
         else:
-            coins = level * 1000
-            gems = level * 20
-            tokens = level * 3 + 10
+            coins = next_level * 1000
+            gems = next_level * 20
+            tokens = next_level * 3 + 10
 
         # Generate the output message in HTML format
         xp_info = f"""
@@ -80,42 +81,4 @@ def xp_command(update: Update, context: CallbackContext):
     else:
         update.message.reply_text("Please reply to an inventory message to get XP details.")
 
-# /iseal command handler to display sealing techniques
-def iseal_command(update: Update, context: CallbackContext):
-    response = """
-<b>🍃 Naruto Sealing Techniques 🍃</b>
-
-🔰 <b>Available Seals</b> 🔰
-
-📜 <b>1️⃣ Four Symbol Seal</b>  
-🌀 <b>Catch Chance</b>: 25%  
-💰 <b>Price</b>: 2,000 Gems  
-⚡ <b>Chakra Usage</b>: 1,000 per use  
-
-📜 <b>2️⃣ Five Elements Seal</b>  
-🔥 <b>Catch Chance</b>: 50%  
-💰 <b>Price</b>: 9,000 Gems  
-⚡ <b>Chakra Usage</b>: 10,000 per use  
-
-📜 <b>3️⃣ Adamantine Sealing Chains</b>  
-⛓️ <b>Catch Chance</b>: 75%  
-💰 <b>Price</b>: 20,000 Gems  
-⚡ <b>Chakra Usage</b>: 25,000 per use  
-
-📜 <b>4️⃣ Demonic Status Chain</b>  
-👹 <b>Catch Chance</b>: 90%  
-🔒 <b>Unlock Requirement</b>: Madara Uchiha must be in your team  
-⚡ <b>Chakra Usage</b>: 250,000 per use  
-
-🌟 <b>Team Synergy Bonus</b> 🌟  
-⚔️ If Hashirama Senju or Kushina Uzumaki is in your team, the chances of catching the Beast with any seal will be greatly boosted!
-
-RYUK, [12/25/2024 10:01 PM]
-🎮 <b>Shinobi Tips</b>:  
-🍥 Save your chakra for stronger seals.  
-🍥 Build a balanced team for maximum success.  
-🍥 Aim for synergy to boost your chances!
-
-<b>💡 Believe in your ninja way and seal the Beast!</b>
-"""
-    update.message.reply_text(response, parse_mode="HTML")
+ 
